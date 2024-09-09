@@ -78,6 +78,28 @@ typedef enum _sai_mirror_session_congestion_mode_t
 } sai_mirror_session_congestion_mode_t;
 
 /**
+ * @brief SAI ERSPAN types
+ */
+typedef enum _sai_erspan_type_t
+{
+    /**
+     * @brief Type-I Encapsulation | L2 Ethernet header | IP header | GRE header | Original mirrored packet
+     */
+    SAI_ERSPAN_TYPE_I,
+
+    /**
+     * @brief Type-II Encapsulation | L2 Ethernet header | IP header | GRE header | ERSPAN (8B) | Original mirrored packet
+     */
+    SAI_ERSPAN_TYPE_II,
+
+    /**
+     * @brief Type-III Encapsulation | L2 Ethernet header | IP header | GRE header | ERSPAN (12B) + optional headers | Original mirrored packet
+     */
+    SAI_ERSPAN_TYPE_III
+
+} sai_erspan_type_t;
+
+/**
  * @brief SAI attributes for mirror session
  */
 typedef enum _sai_mirror_session_attr_t
@@ -361,6 +383,16 @@ typedef enum _sai_mirror_session_attr_t
      * @default SAI_NULL_OBJECT_ID
      */
     SAI_MIRROR_SESSION_ATTR_COUNTER_ID,
+
+    /**
+     * @brief ERSPAN type
+     *
+     * @type sai_erspan_type_t
+     * @flags CREATE_ONLY
+     * @default SAI_ERSPAN_TYPE_I
+     * @validonly SAI_MIRROR_SESSION_ATTR_TYPE == SAI_MIRROR_SESSION_TYPE_ENHANCED_REMOTE
+     */
+    SAI_MIRROR_SESSION_ATTR_ERSPAN_TYPE,
 
     /**
      * @brief End of attributes
