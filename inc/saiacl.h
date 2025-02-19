@@ -291,6 +291,9 @@ typedef enum _sai_acl_action_type_t
 
     /** Disable packet trim */
     SAI_ACL_ACTION_TYPE_PACKET_TRIM_DISABLE = 0x00000039,
+
+    /** Bind a TAM object */
+    SAI_ACL_ACTION_TYPE_TAM_OBJECT = 0x0000003a,
 } sai_acl_action_type_t;
 
 /**
@@ -3304,9 +3307,22 @@ typedef enum _sai_acl_entry_attr_t
     SAI_ACL_ENTRY_ATTR_ACTION_PACKET_TRIM_DISABLE = SAI_ACL_ENTRY_ATTR_ACTION_START + 0x39,
 
     /**
+     * @brief ACL bind point for TAM object
+     *
+     * Bind (or unbind) a TAM object.
+     *
+     * @type sai_acl_action_data_t sai_object_id_t
+     * @flags CREATE_AND_SET
+     * @objects SAI_OBJECT_TYPE_TAM
+     * @allownull true
+     * @default disabled
+     */
+    SAI_ACL_ENTRY_ATTR_ACTION_TAM_OBJECT = SAI_ACL_ENTRY_ATTR_ACTION_START + 0x3a,
+
+    /**
      * @brief End of Rule Actions
      */
-    SAI_ACL_ENTRY_ATTR_ACTION_END = SAI_ACL_ENTRY_ATTR_ACTION_PACKET_TRIM_DISABLE,
+    SAI_ACL_ENTRY_ATTR_ACTION_END = SAI_ACL_ENTRY_ATTR_ACTION_TAM_OBJECT,
 
     /**
      * @brief End of ACL Entry attributes
